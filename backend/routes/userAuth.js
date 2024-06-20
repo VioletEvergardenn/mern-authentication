@@ -1,9 +1,9 @@
 import express from "express";
-import { User } from "../models/Users";
-const router = express.Router();
+import { User } from "../models/Users.js";
+const userAuthRouter = express.Router();
 import bcrypt from "bcrypt";
 
-router.post("/signup", async function (req, res) {
+userAuthRouter.post("/signup", async function (req, res) {
   const { email, password, firstname, lastname } = req.body;
   const user = await User.find({ email });
   console.log(user);
@@ -23,4 +23,4 @@ router.post("/signup", async function (req, res) {
   return res.json({ message: "new user created" });
 });
 
-export { router as userAuthRouter };
+export { userAuthRouter };
